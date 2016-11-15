@@ -4,6 +4,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'lib'),
+    publicPath: '/lib/',
     filename: 'bundle.js',
   },
   devtool: 'eval',
@@ -32,7 +33,7 @@ module.exports = {
     ]
   },
   resolve: {
-    root: path.resolve(__dirname, 'client'),
+    root: path.resolve(__dirname, 'src'),
     extensions: [
       '',
       '.js',
