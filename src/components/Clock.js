@@ -1,37 +1,42 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Digits from './Digits';
-
+import time from '../utils/getTime.js';
 //TODO:
-// set up karma/jasmine/enzyme testing
 // set up counter for clock
 // SASS
 
-const time = [
-  {
-    title: 'days',
-    digit: 21,
-  },
-  {
-    title: 'hours',
-    digit: 20,
-  },
-  {
-    title: 'minutes',
-    digit: 19,
-  },
-  {
-    title: 'seconds',
-    digit: 18,
-  }
-]
+//const currentTime = time();
 
-const Clock = ({year}) => (
-  <div>
-    <h1>New Years {year}</h1>
-    {time.map(({title, digit}) => (
-      <Digits digit={digit} title={title} />
-    ))}
-  </div>
-);
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentTime: time()
+    };
+    this.updateTime = this.setState({currentTime: time()});
+  }
+
+  componentWillMount() {
+    setInterval(this.updateTime, 1000);
+  }
+
+  render() {
+    let {year} = this.props;
+    return (
+      <div
+        className='main-container'>
+        <h1
+          className='title'>
+          New Years {year}
+        </h1>
+          <div className='countdown-container'>
+            {this.props.currentTime.map(({title, digit}) => (
+              <Digits digit={digit} title={title} />
+            ))}
+          </div>
+      </div>
+    )
+  }
+};
 
 export default Clock;

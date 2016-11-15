@@ -4,8 +4,10 @@ import Clock from './components/Clock';
 
 import './styles/main.sass';
 
+let year = 2017;
+
 var App = () => (
-  <Clock />
+  <Clock year={year} />
 )
 
 ReactDOM.render(<App />, document.getElementById('entry'));
