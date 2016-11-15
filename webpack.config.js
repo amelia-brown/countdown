@@ -22,6 +22,12 @@ module.exports = {
       {
         test: /\.json$/,
         loader:'json-loader',
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'file',
+        include: path.resolve(__dirname, 'img/'),
+        exclude: /node_modules/,
       }
     ]
   },
