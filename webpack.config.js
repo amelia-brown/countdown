@@ -4,8 +4,10 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'lib'),
-    publicPath: '/lib/',
-    filename: 'bundle.js',
+    publicPath: '/countdown/',
+    //filename: 'bundle.js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[chunkhash].js'
   },
   devtool: 'eval',
   module: {
