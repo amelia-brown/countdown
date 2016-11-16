@@ -19,7 +19,9 @@ class Clock extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.updateTime, 1000)}
+    console.log('xx');
+    setInterval(this.updateTime, 1000)
+  }
 
   render() {
     let {year} = this.props;

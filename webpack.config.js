@@ -5,9 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'lib'),
     publicPath: '/countdown/',
-    //filename: 'bundle.js',
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[chunkhash].js'
+    filename: 'bundle.js',
   },
   devtool: 'eval',
   module: {

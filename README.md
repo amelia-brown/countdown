@@ -9,4 +9,6 @@ clone the project, cd in the directory and run
 
 `http-server`
 
+or visit [the live project](http://ameliabrown.ca/countdown/)
+
 enjoy!
