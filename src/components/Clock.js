@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Digits from './Digits';
-import time from '../utils/getTime.js';
+import {getTime} from '../utils/getTime.js';
 //TODO:
 // set up counter for clock
 // SASS
@@ -11,20 +11,19 @@ class Clock extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentTime: time()
+      currentTime: getTime()
     };
     this.updateTime = () => {
-      this.setState({currentTime: time()})
+      this.setState({currentTime: getTime()})
     };
   }
 
   componentDidMount() {
-    console.log('xx');
     setInterval(this.updateTime, 1000)
   }
 
   render() {
-    let {year} = this.props;
+    let colon, {year} = this.props;
     return (
       <div
         className='main-container'>
@@ -33,10 +32,16 @@ class Clock extends React.Component {
           New Years {year}
         </h1>
           <div className='countdown-container'>
-            {this.state.currentTime.map(({title, digit}) => (
-              <Digits digit={digit} title={title} />
-            ))}
+            {this.state.currentTime.map(({title, digit}, i) => {
+              if (i > 0) {
+                colon = true;
+              }
+              return (
+                <Digits digit={digit} title={title} />
+              )
+            })}
           </div>
+        {colon ? <span className='colon'> : </span> : ''}
       </div>
     )
   }

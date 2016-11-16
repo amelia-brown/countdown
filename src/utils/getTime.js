@@ -1,7 +1,12 @@
+var year = 2016;
 const getTime = function() {
-  var newYears = Date.UTC(2016, 11, 31, 31, 59, 59);
+  var newYears = Date.UTC(year, 11, 31, 31, 59, 59);
   var now = Date.parse(new Date);
   var difference = newYears - now;
+  if (difference <= 0) {
+    year++;
+    newYears = Date.UTC(year, 11, 31, 31, 59, 59);
+  }
 
   var second = 1000;
   var minute = second * 60;
@@ -34,4 +39,5 @@ const getTime = function() {
 
   return time;
 };
-module.exports = getTime;
+module.exports.year = year;
+module.exports.getTime = getTime;

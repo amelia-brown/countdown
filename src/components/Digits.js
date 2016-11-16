@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DigitContainer = ({digit, title}) => {
+const DigitContainer = ({digit, title, colon}) => {
   let formattedDigit = digit.toString().length < 2
     ? '0' + digit
     : '' + digit;
@@ -13,7 +13,7 @@ const DigitContainer = ({digit, title}) => {
         {formattedDigit.split('').map((number) => (
           <div
             className='digit'>
-            {number}
+              {number}
           </div>
         ))}
       </div>
