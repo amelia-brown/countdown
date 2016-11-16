@@ -13,12 +13,13 @@ class Clock extends React.Component {
     this.state = {
       currentTime: time()
     };
-    this.updateTime = this.setState({currentTime: time()});
+    this.updateTime = () => {
+      this.setState({currentTime: time()})
+    };
   }
 
-  componentWillMount() {
-    setInterval(this.updateTime, 1000);
-  }
+  componentDidMount() {
+    setInterval(this.updateTime, 1000)}
 
   render() {
     let {year} = this.props;
@@ -30,7 +31,7 @@ class Clock extends React.Component {
           New Years {year}
         </h1>
           <div className='countdown-container'>
-            {this.props.currentTime.map(({title, digit}) => (
+            {this.state.currentTime.map(({title, digit}) => (
               <Digits digit={digit} title={title} />
             ))}
           </div>
